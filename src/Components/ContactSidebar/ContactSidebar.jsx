@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { getContacts } from '../../services/contactsService'
 import { ContactsContext } from '../../Context/ContactsContext'
 import { Link } from 'react-router-dom'
@@ -7,18 +7,29 @@ import './ContactSidebar.css'
 export default function ContactSidebar() {
 
     const { contacts, favorite_name } = useContext(ContactsContext)
+    const [searchQuery, setSearchQuery] = useState('')
+
+    // Filtrar contactos basado en la búsqueda
+    const filteredContacts = contacts.filter(contact =>
+        contact.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
 
     return (
         <div className="sidebar">
             <div className="sidebar-header">
                 <h2>Whatsapp Clone</h2>
                 <div className="search-bar">
-                    <input type="text" placeholder="Buscar o empezar un chat" />
+                    <input
+                        type="text"
+                        placeholder="Buscar o empezar un chat"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
                 </div>
             </div>
             <div className="contacts-list">
                 {
-                    contacts.map((contact) => {
+                    filteredContacts.map((contact) => {
                         const lastMessage = contact.messages[contact.messages.length - 1];
                         return (
                             <Link
