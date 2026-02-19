@@ -41,6 +41,9 @@ export default function ContactSidebar() {
                                     src={contact.profile_picture}
                                     alt={contact.name}
                                     className="contact-avatar"
+                                    onError={(e) => {
+                                        e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(contact.name)}&background=random`
+                                    }}
                                 />
                                 <div className="contact-info">
                                     <div className="contact-name">{contact.name}</div>

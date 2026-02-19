@@ -76,6 +76,9 @@ export default function ContactScreen() {
                                 src={contact_selected.profile_picture}
                                 alt={contact_selected.name}
                                 className="chat-avatar"
+                                onError={(e) => {
+                                    e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(contact_selected.name)}&background=random&size=200`
+                                }}
                             />
                             <div className="chat-info">
                                 <h2>{contact_selected.name}</h2>

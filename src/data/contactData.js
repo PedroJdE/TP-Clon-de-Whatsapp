@@ -3,7 +3,7 @@ const contacts = [
         id: 1,
         name: 'Shrek',
         last_time_connection: 'Hace 1 hora',
-        profile_picture: 'https://upload.wikimedia.org/wikipedia/en/4/4c/Shrek_%28character%29.png',
+        profile_picture: '/profile-pictures/shrek-png.jpg',
         messages: [
             {
                 id: 1,
@@ -25,7 +25,7 @@ const contacts = [
         id: 2,
         name: 'Princesa Fiona',
         last_time_connection: 'Hace 2 horas',
-        profile_picture: 'https://upload.wikimedia.org/wikipedia/en/4/4a/Princess_Fiona.png',
+        profile_picture: '/profile-pictures/Fiona_Profile.webp',
         messages: [
             {
                 id: 1,
@@ -47,7 +47,7 @@ const contacts = [
         id: 3,
         name: 'Burro',
         last_time_connection: 'Hace 30 minutos',
-        profile_picture: 'https://upload.wikimedia.org/wikipedia/en/5/5a/Donkey_%28Shrek%29.png',
+        profile_picture: '/profile-pictures/burro.jpg',
         messages: [
             {
                 id: 1,
@@ -69,7 +69,7 @@ const contacts = [
         id: 4,
         name: 'Gato con Botas',
         last_time_connection: 'Hace 4 horas',
-        profile_picture: 'https://upload.wikimedia.org/wikipedia/en/8/8b/Puss_in_Boots_%28Shrek%29.png',
+        profile_picture: '/profile-pictures/gato.jpg',
         messages: [
             {
                 id: 1,
@@ -91,7 +91,7 @@ const contacts = [
         id: 5,
         name: 'Dragona',
         last_time_connection: 'Hace 5 horas',
-        profile_picture: 'https://static.wikia.nocookie.net/shrek/images/4/4a/Dragon.png',
+        profile_picture: '/profile-pictures/dragona.jpg',
         messages: [
             {
                 id: 1,
@@ -113,7 +113,7 @@ const contacts = [
         id: 6,
         name: 'Señor Farquaad',
         last_time_connection: 'Hace 6 horas',
-        profile_picture: 'https://upload.wikimedia.org/wikipedia/en/1/1b/Lord_Farquaad.png',
+        profile_picture: '/profile-pictures/lord.webp',
         messages: [
             {
                 id: 1,
@@ -135,7 +135,7 @@ const contacts = [
         id: 7,
         name: 'Jengibre',
         last_time_connection: 'Hace 7 horas',
-        profile_picture: 'https://static.wikia.nocookie.net/shrek/images/6/6f/Gingerbread_Man.png',
+        profile_picture: '/profile-pictures/Gingi.jpg',
         messages: [
             {
                 id: 1,
@@ -157,7 +157,7 @@ const contacts = [
         id: 8,
         name: 'Pinocho',
         last_time_connection: 'Hace 8 horas',
-        profile_picture: 'https://upload.wikimedia.org/wikipedia/en/4/4b/Pinocchio_%28Shrek%29.png',
+        profile_picture: '/profile-pictures/Pinocchio_Profile.jpg',
         messages: [
             {
                 id: 1,
@@ -179,7 +179,7 @@ const contacts = [
         id: 9,
         name: 'Lobo Feroz',
         last_time_connection: 'Hace 9 horas',
-        profile_picture: 'https://static.wikia.nocookie.net/shrek/images/9/9c/Big_Bad_Wolf.png',
+        profile_picture: '/profile-pictures/lobo.png',
         messages: [
             {
                 id: 1,
@@ -201,7 +201,7 @@ const contacts = [
         id: 10,
         name: 'Los Tres Cerditos',
         last_time_connection: 'Hace 10 horas',
-        profile_picture: 'https://static.wikia.nocookie.net/shrek/images/3/3c/Three_Little_Pigs.png',
+        profile_picture: '/profile-pictures/3pigs.jpg',
         messages: [
             {
                 id: 1,
