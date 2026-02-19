@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { getContacts } from '../../services/contactsService'
 import { ContactsContext } from '../../Context/ContactsContext'
-import { Link } from 'react-router-dom'
 import './ContactSidebar.css'
 
-export default function ContactSidebar() {
+export default function ContactSidebar({ onSelectContact }) {
 
     const { contacts, favorite_name } = useContext(ContactsContext)
     const [searchQuery, setSearchQuery] = useState('')
@@ -32,8 +31,8 @@ export default function ContactSidebar() {
                     filteredContacts.map((contact) => {
                         const lastMessage = contact.messages[contact.messages.length - 1];
                         return (
-                            <Link
-                                to={`/contact/${contact.id}`}
+                            <div
+                                onClick={() => onSelectContact(contact)}
                                 key={contact.id}
                                 className="contact-item"
                             >
@@ -54,7 +53,7 @@ export default function ContactSidebar() {
                                 <div className="contact-time">
                                     {contact.last_time_connection}
                                 </div>
-                            </Link>
+                            </div>
                         )
                     })
                 }
