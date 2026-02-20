@@ -102,13 +102,17 @@
 .messages-container {
     flex: 1;
     padding: 16px;
+    padding-bottom: 80px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    min-height: 0;
 }
 
-.messages-container {
-    min-height: 0;
+@media (max-width: 680px) {
+    .messages-container {
+        padding-bottom: 100px;
+    }
 }
 
 .message {
@@ -157,10 +161,20 @@
     display: flex;
     align-items: center;
     border-top: 1px solid #ddd;
+    flex-shrink: 0;
 }
 
-.message-form {
-    flex-shrink: 0;
+@media (max-width: 680px) {
+    .message-form {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        width: 100%;
+        padding: 8px 16px 8px 16px;
+        padding-bottom: calc(8px + env(safe-area-inset-bottom));
+    }
 }
 
 .message-input {
