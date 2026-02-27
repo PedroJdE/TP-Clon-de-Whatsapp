@@ -23,12 +23,17 @@ export default function HomeScreen() {
       if (window.innerWidth > 680) {
         // En desktop: mostrar sidebar siempre
         setShowSidebar(true)
+      } else {
+        // En mobile: ocultar sidebar si hay un chat seleccionado
+        if (selectedContact) {
+          setShowSidebar(false)
+        }
       }
     }
 
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [selectedContact])
 
   // Función para enviar mensaje
   const handleSendMessage = (e) => {
