@@ -155,12 +155,20 @@
 }
 
 .message-bubble {
-    max-width: 60%;
+    max-width: 75%;
     padding: 8px 12px;
     border-radius: 18px;
     font-size: 14px;
     line-height: 1.4;
     word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+@media (max-width: 680px) {
+    .message-bubble {
+        max-width: 85%;
+    }
 }
 
 .message.sent .message-bubble {
