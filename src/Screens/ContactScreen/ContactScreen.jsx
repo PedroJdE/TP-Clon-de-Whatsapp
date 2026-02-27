@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
+import { GoChevronLeft } from "react-icons/go";
 import ContactSidebar from '../../Components/ContactSidebar/ContactSidebar'
 import { useParams, useNavigate } from 'react-router'
 import { ContactsContext } from '../../Context/ContactsContext'
@@ -70,7 +71,7 @@ export default function ContactScreen() {
                                 className="back-button"
                                 onClick={handleBackToSidebar}
                             >
-                                ←
+                                <GoChevronLeft />
                             </button>
                             <img
                                 src={contact_selected.profile_picture}

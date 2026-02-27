@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
+import { GoChevronLeft, GoPaperAirplane } from "react-icons/go";
 import ContactSidebar from '../../Components/ContactSidebar/ContactSidebar'
 import { ContactsContext } from '../../Context/ContactsContext'
 import './HomeScreen.css'
@@ -62,13 +63,13 @@ export default function HomeScreen() {
       <div className={`sidebar-wrapper ${showSidebar ? 'show' : 'hide'}`}>
         <ContactSidebar 
           onSelectContact={setSelectedContact} 
-          onClose={() => setShowSidebar(false)}
+          onClose={() => selectedContact && setShowSidebar(false)}
         />
       </div>
       {showSidebar && (
         <div 
           className="sidebar-backdrop" 
-          onClick={() => setShowSidebar(false)}
+          onClick={() => selectedContact && setShowSidebar(false)}
         />
       )}
       {!selectedContact ? (
@@ -87,7 +88,7 @@ export default function HomeScreen() {
               className="back-button"
               onClick={handleBackToSidebar}
             >
-              ←
+              <GoChevronLeft />
             </button>
             <img
               src={selectedContact.profile_picture}
@@ -123,7 +124,10 @@ export default function HomeScreen() {
               placeholder='Escribe un mensaje...'
               className="message-input"
             />
-            <button type='submit' className="send-button">Enviar</button>
+            <button type='submit' className="send-button">
+              <span className="send-text">Enviar</span>
+              <span className="send-icon"><GoPaperAirplane /></span>
+            </button>
           </form>
         </div>
       )}

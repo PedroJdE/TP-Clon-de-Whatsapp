@@ -59,6 +59,11 @@
     align-items: center;
 }
 
+.chat-header h1 {
+    margin: 0 auto;
+    animation: fadeInPulse 2s infinite;
+}
+
 .back-button {
     display: none;
     background: none;
