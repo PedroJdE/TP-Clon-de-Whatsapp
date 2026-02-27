@@ -1,22 +1,64 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import { getContacts } from '../../services/contactsService'
 import { ContactsContext } from '../../Context/ContactsContext'
 import './ContactSidebar.css'
 
-export default function ContactSidebar({ onSelectContact }) {
+export default function ContactSidebar({ onSelectContact, onClose }) {
 
     const { contacts, favorite_name } = useContext(ContactsContext)
     const [searchQuery, setSearchQuery] = useState('')
+    const [translateX, setTranslateX] = useState(0)
+    const touchStartX = useRef(0)
+    const sidebarRef = useRef(null)
 
     // Filtrar contactos basado en la búsqueda
     const filteredContacts = contacts.filter(contact =>
         contact.name.toLowerCase().includes(searchQuery.toLowerCase())
     )
 
+    // Manejo de touch para swipe
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX
+    }
+
+    const handleTouchMove = (e) => {
+        if (touchStartX.current === 0) return
+        const currentX = e.touches[0].clientX
+        const diff = currentX - touchStartX.current
+        
+        // Solo permitir movimiento hacia la izquierda
+        if (diff < 0) {
+            setTranslateX(diff)
+        }
+    }
+
+    const handleTouchEnd = () => {
+        // Si el swipe fue mayor a 50px, cerrar
+        if (translateX < -50 && onClose) {
+            onClose()
+        }
+        setTranslateX(0)
+        touchStartX.current = 0
+    }
+
     return (
-        <div className="sidebar">
+        <div 
+            className="sidebar"
+            ref={sidebarRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            style={{ transform: `translateX(${translateX}px)` }}
+        >
             <div className="sidebar-header">
-                <h2>Whatsapp Clone</h2>
+                <div className="header-top">
+                    <h2>Whatsapp Clone</h2>
+                    {onClose && (
+                        <button className="close-button" onClick={onClose} title="Cerrar">
+                            ✕
+                        </button>
+                    )}
+                </div>
                 <div className="search-bar">
                     <input
                         type="text"

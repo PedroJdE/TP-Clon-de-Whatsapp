@@ -17,6 +17,19 @@ export default function HomeScreen() {
     }
   }, [selectedContact])
 
+  // Detectar cambios de tamaño de ventana
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 680) {
+        // En desktop: mostrar sidebar siempre
+        setShowSidebar(true)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   // Función para enviar mensaje
   const handleSendMessage = (e) => {
     e.preventDefault()
@@ -42,8 +55,17 @@ export default function HomeScreen() {
   return (
     <div className="home-screen">
       <div className={`sidebar-wrapper ${showSidebar ? 'show' : 'hide'}`}>
-        <ContactSidebar onSelectContact={setSelectedContact} />
+        <ContactSidebar 
+          onSelectContact={setSelectedContact} 
+          onClose={() => setShowSidebar(false)}
+        />
       </div>
+      {showSidebar && (
+        <div 
+          className="sidebar-backdrop" 
+          onClick={() => setShowSidebar(false)}
+        />
+      )}
       {!selectedContact ? (
         <div className="chat-container">
           <div className="chat-header">
